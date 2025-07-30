@@ -1,0 +1,24 @@
+.grain-overlay {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+  
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.956) 1px, transparent 1px);
+    background-size: 2px 2px;
+    opacity: 0.4; /* интенсивность зерна */
+    mix-blend-mode: screen; /* можно попробовать 'overlay', 'soft-light' */
+  
+    animation: grainAnimation 0.5s steps(2) infinite;
+  }
+  
+  @keyframes grainAnimation {
+    0%   { transform: translate(0px, 0px); }
+    25%  { transform: translate(1px, -1px); }
+    50%  { transform: translate(-1px, 1px); }
+    75%  { transform: translate(1px, 1px); }
+    100% { transform: translate(0px, 0px); }
+  }

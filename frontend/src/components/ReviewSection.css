@@ -1,0 +1,88 @@
+.review-container {
+    width: 100vw;
+    height: 40.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 46px;
+    box-sizing: border-box;
+    background-color: rgb(47, 29, 19); /* можно заменить на градиент или image */
+  }
+
+  
+  /* Карточка отзыва */
+  .review-card {
+    margin-top: 7%;
+    width: 330px;
+    height: 350px;
+    background: linear-gradient(
+      135deg,
+      rgba(96, 67, 37, 0.434),
+      rgba(255, 255, 255, 0.02)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.25),
+      inset 0 0 10px rgba(255, 255, 255, 0.05);
+    position: relative;
+    padding: 8px;
+    color: white;
+    overflow: hidden;
+    
+  }
+  
+  .review-card::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -40%;
+    width: 180%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.2),
+      transparent 60%
+    );
+    transform: rotate(25deg);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .middle-review {
+    transform: translateY(30px);
+    z-index: 1;
+  }
+
+  
+  /* Текст отзыва */
+  .review-text {
+    padding-top: 3%;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  
+  /* Автор отзыва */
+  .review-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Аватар */
+  .review-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 80%;
+    object-fit: cover;
+    margin-bottom: 8px;
+  }
+  
+  /* Имя */
+  .review-name {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #ffffff;
+  }

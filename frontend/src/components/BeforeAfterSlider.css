@@ -1,0 +1,152 @@
+/* BeforeAfterSlider.css */
+.before-after-container {
+  position: relative;
+  width: 584px;
+  height: 326.75px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  
+  background: #f0f0f0;
+}
+
+.before-after-container:active {
+  cursor: grabbing;
+}
+
+.before-image-container,
+.after-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;          /* <-- важно */
+  border-radius: 8px;        /* <-- ключевой момент */
+}
+.comparison-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;        /* <-- добавляем сюда тоже */
+  pointer-events: none;
+}
+.after-image-container {
+  overflow: hidden;
+}
+
+.image-label {
+  position: absolute;
+  top: 20px;
+  padding: 8px 13px;
+  background: rgba(247, 247, 247, 0);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  z-index: 102;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.before-label {
+  left: 20px;
+  bottom: 20px;
+  bottom: auto;
+}
+
+.after-label {
+  right: 20px;
+  bottom: 20px;
+  bottom: auto;
+}
+
+.slider-line {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: white;
+  z-index: 9;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid layout for multiple sliders */
+.slider-grid {
+  max-width: 1200px;         /* ограничиваем максимальную ширину */
+  width: 90%;                /* адаптивная ширина */
+  margin: 0 auto;            /* центрирование */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.comparison-image {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .before-after-container {
+    height: 300px;
+  }
+  
+  .slider-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-label {
+    font-size: 10px;
+    padding: 6px 12px;
+    top: 15px;
+  }
+  
+  .before-label {
+    left: 15px;
+    bottom: 15px;
+    top: auto;
+  }
+  
+  .after-label {
+    right: 15px;
+    bottom: 15px;
+    top: auto;
+  }
+  
+  .slider-handle {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .slider-arrow {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .before-after-container {
+    height: 250px;
+  }
+  
+  .slider-handle {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .slider-arrow {
+    font-size: 14px;
+  }
+}

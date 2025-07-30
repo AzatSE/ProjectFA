@@ -1,0 +1,264 @@
+.grid-container {
+  width: 100%; /* занять всю ширину экрана */
+  max-width: 100vw; /* не выходить за экран */
+  padding: 20px 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 555px); /* ровно 3 колонки */
+  justify-content: center; /* центрируем сетку, если есть свободное место */
+  gap: 16px;
+  box-sizing: border-box;
+  background: #0f0f0f;
+  color: white;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* Видео внутри квадратного блока */
+.video-box {
+  width: 555px;
+  height: 318px;
+  background: black;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.video-box video {
+  width: 555px !important;
+  height: 318px !important;
+  object-fit: cover;
+  display: block;
+}
+.video-card {
+  height: 450px;
+  width: 555px; /* фиксированная ширина */
+  background: #0f0f0f;
+  border-radius: 4px;
+  /* box-shadow: 0 0 20px rgba(0,0,0,0.7); */
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+
+.video-card:hover {
+  transform: scale(1.015);
+  cursor: pointer;
+}
+
+.video-title {
+  margin: 12px;
+  font-family: "Aileron", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffd60a;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.video-description {
+  max-height: 3.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+
+/* Затемнённый фон модалки */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+/* Обёртка видео внутри модалки */
+.modal-content {
+  position: relative;
+  width: 80vw;
+  max-width: 960px;
+  background-color: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Видео — занимает всю ширину контейнера */
+.modal-content video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Кнопка закрытия */
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  color: #ffd60a;
+  outline: none;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+/* Тёмный фон фильтрации */
+.filter-section {
+  background-color: #111;
+  padding: 30px 40px;
+  border-bottom: 1px solid #222222;
+
+}
+
+.filter-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Поле поиска */
+.search-input {
+  width: 100%;
+  padding: 6px 18px;
+  border-radius: 4px;
+  border: 1px solid #444;
+  font-size: 16px;
+  margin-bottom: 25px;
+  background-color: #1a1a1a;
+  color: #fff;
+  margin-top: 9%;
+}
+
+.search-input::placeholder {
+  color: #888;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+/* Кнопки категорий */
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.category-button {
+  background: transparent;
+  color: #ccc;
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.category-button:hover {
+  color: #fff;
+  border-color: #ffd700;
+}
+
+.category-button.selected {
+  background-color: #ffd700;
+  color: #000;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Общий header
+.page-header.cinematic {
+  width: 100%;
+  background: linear-gradient(to bottom, #121212 0%, #000 100%);
+  color: #eee;
+  text-align: center;
+  padding: 100px 20px 80px;
+  margin-top: 80px;
+  margin-bottom: 60px;
+  box-shadow: 0 8px 12px -4px rgba(47, 47, 47, 0.396);
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.page-header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  text-transform: none;
+  letter-spacing: 0.5px;
+}
+
+.page-title .highlight {
+  color: #ffd700;
+  font-weight: 800;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.page-subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #bbb;
+  font-style: normal;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+
+.cinematic-letter-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.letter {
+  opacity: 0;
+  transform: scale(0.8) translateY(10px);
+  display: inline-block;
+  animation: letterIn 0.4s ease-out forwards;
+}
+
+@keyframes letterIn {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+} */

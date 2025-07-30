@@ -1,0 +1,84 @@
+.fourth-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 34px;
+    padding: 60px 20px;
+    margin: 4%;
+
+  }
+  
+  .product-card {
+
+    position: relative;
+    width: 570px;
+    height: 410px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8.5px; /* скругление */
+    overflow: hidden;
+
+  }
+  
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+  }
+  
+  .card-info {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+  .card-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px; /* было 1rem */
+  }
+  .card-info p {
+    font-size: 1rem;
+    line-height: 1.4; /* чуть плотнее */
+    margin-bottom: 2rem; /* было 1.5rem */
+  }
+  
+  
+
+  .price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px; /* отступ до кнопки */
+  }
+  
+  .product-wrapper {
+    position: relative;
+    margin-bottom: 60px; /* Учитываем кнопку, чтобы не обрезалась */
+  }
+  
+  .button-wrapper {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  .buy-button {
+    background-color: #ffb300;
+    color: #ffffff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
