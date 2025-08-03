@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 1.2rem 4.5rem;
+  padding: 1.2rem 8rem;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
@@ -82,8 +82,8 @@
 
 .navbar-section {
   display: flex;
-  gap: 1.5rem;
-  font-size: 16px;
+  gap: 1.3rem;
+  font-size: 19px;
   white-space: nowrap;
 }
 
@@ -93,6 +93,8 @@
 
 .right {
   justify-content: flex-end;
+  
+
 }
 
 .navbar-logo {

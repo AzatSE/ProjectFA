@@ -98,9 +98,9 @@ export default function Navbar() {
 
         <div className="navbar-section left">
           <Link className="nav-link" to="/works">WORKS</Link>
-          <Link className="nav-link" to="/tutorials">COURSES</Link>
+          {/* <Link className="nav-link" to="/tutorials">COURSES</Link> */}
           <Link className="nav-link" to="/" onClick={handleLutsClick}>
-            LUT'S
+          LUTs / PG
           </Link>
         </div>
 
@@ -126,7 +126,7 @@ export default function Navbar() {
         <div className="navbar-section right">
           <Link className="nav-link" to="/about">ABOUT</Link>
           <Link className="nav-link" to="/products">ORDER NOW</Link>
-          <Link className="nav-link" to="/contacts">CONTACTS</Link>
+          {/* <Link className="nav-link" to="/contacts">CONTACTS</Link> */}
         </div>
       </nav>
 
