@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 1.2rem 8rem;
+  padding: 1.2rem 7rem;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 0.9rem;
@@ -24,7 +24,6 @@
     backdrop-filter 0.4s ease;
   will-change: transform, opacity;
 }
-
 /* Когда navbar становится solid при прокрутке */
 .navbar--solid {
   background-color: rgba(0, 0, 0, 0.312);
@@ -82,7 +81,7 @@
 
 .navbar-section {
   display: flex;
-  gap: 1.3rem;
+  gap: 1.1rem;
   font-size: 19px;
   white-space: nowrap;
 }

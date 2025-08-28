@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";  // ✅
 import './videoplayerpage.css';
 
 function VideoPlayerPage() {
@@ -10,13 +11,16 @@ function VideoPlayerPage() {
   const [loading, setLoading] = useState(true);
   const [fadeIn, setFadeIn] = useState(false);
 
-
-
-
+  const { i18n } = useTranslation();  // ✅ используем хук, а не прямой импорт
 
   useEffect(() => {
-    // Загружаем данные видео по id
-    fetch(`http://localhost:8000/api/videos/${id}/`)
+    const lang = i18n.language || 'en';
+
+    fetch(`http://localhost:8000/api/videos/${id}/`, {
+      headers: {
+        'Accept-Language': lang
+      }
+    })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch video");
         return res.json();
@@ -24,13 +28,13 @@ function VideoPlayerPage() {
       .then((data) => {
         setVideo(data);
         setLoading(false);
-        setFadeIn(true);  // запускаем анимацию после загрузки
+        setFadeIn(true);
       })
       .catch((error) => {
         console.error(error);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, i18n.language]);  // ✅ компонент будет реагировать на смену языка
 
   if (loading) return <div>Loading...</div>;
 

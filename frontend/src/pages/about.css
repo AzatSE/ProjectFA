@@ -1,24 +1,129 @@
-.grain-overlay {
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-  
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.956) 1px, transparent 1px);
-    background-size: 2px 2px;
-    opacity: 0.4; /* интенсивность зерна */
-    mix-blend-mode: screen; /* можно попробовать 'overlay', 'soft-light' */
-  
-    animation: grainAnimation 0.5s steps(2) infinite;
+.about-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #fff; /* белый фон для удобного чтения */
+  color: #222; /* тёмно-серый текст, мягче чем чисто чёрный */
+  line-height: 1.6;
+}
+
+.about-image {
+  position: relative;
+  width: 100%;
+  height: 67vh;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.about-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Анимация появления текста */
+.about-text {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  @keyframes grainAnimation {
-    0%   { transform: translate(0px, 0px); }
-    25%  { transform: translate(1px, -1px); }
-    50%  { transform: translate(-1px, 1px); }
-    75%  { transform: translate(1px, 1px); }
-    100% { transform: translate(0px, 0px); }
+}
+
+.about-text h2 {
+  font-size: 2.0rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.about-text p {
+  font-size: 1.15rem;
+  font-weight: 430;
+  color: #333; /* мягкий цвет текста */
+}
+.counters {
+  width: 100%;
+  display: flex;
+  gap: 5.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+  flex-wrap: wrap; /* если не влезают, переносим */
+  text-align: center;
+}
+
+.counter-item {
+  width: 200px;
+}
+
+.counter-item h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d9c27c;
+}
+
+.counter-item p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.brands-section {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+  background: #fff; /* можно под цвет сайта */
+}
+
+.brands-track {
+  display: flex;
+  width: calc(200%); /* двойная ширина для бесшовного эффекта */
+  animation: scrollBrands 20s linear infinite;
+}
+
+.brand-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px; /* ширина одного лого */
+  margin: 0 20px;
+}
+
+.brand-item img {
+  max-width: 150px;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.brand-item img:hover {
+  filter: grayscale(0%);
+}
+
+@keyframes scrollBrands {
+  from {
+    transform: translateX(0);
   }
+  to {
+    transform: translateX(-30%);
+  }
+}

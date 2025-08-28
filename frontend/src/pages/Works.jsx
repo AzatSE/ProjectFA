@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import "./works.css";
 import VideoCard from "../components/VideoCard";
-
+import { useTranslation } from "react-i18next"; 
+import background from '../assets/backgroundwhite.jpg';
 // function AnimatedTitle({ text }) {
 //   return (
 //     <h1 className="cinematic-letter-title">
@@ -23,28 +24,31 @@ function Works() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [animateHeader, setAnimateHeader] = useState(false);
-  
 
- useEffect(() => {
-  fetch("http://localhost:8000/api/videos/")
-    .then((res) => res.json())
-    .then((data) => { 
-      console.log("VIDEOS:", data); // ← Добавь эту строку
-      setVideos(data);
+  const { i18n } = useTranslation(); // ✅ получаем доступ к i18n
+  const language = i18n.language || "en"; // ✅ всегда актуальный язык
 
+  useEffect(() => {
+    fetch("http://localhost:8000/api/videos/", {
+      headers: {
+        'Accept-Language': language, // ✅ передаем актуальный язык
+      },
     })
-    .catch(console.error);
-      
+      .then((res) => res.json())
+      .then(setVideos)
+      .catch(console.error); 
 
-    fetch("http://localhost:8000/api/categories/")
+    fetch("http://localhost:8000/api/categories/", {
+      headers: {
+        'Accept-Language': language,
+      },
+    })
       .then((res) => res.json())
       .then(setCategories)
       .catch(console.error);
 
-    // Запускаем анимацию через 100ms
     setTimeout(() => setAnimateHeader(true), 100);
-  }, []);
-
+  }, [language]); 
 
 
   const smoothScrollTo = (targetY, duration = 1000) => {
@@ -89,8 +93,8 @@ function Works() {
       video.category?.id === selectedCategory;
   
     const matchesSearch =
-      video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      video.description.toLowerCase().includes(searchTerm.toLowerCase());
+    (video.title?.toLowerCase().includes(searchTerm.toLowerCase()) || false) ||
+    (video.description?.toLowerCase().includes(searchTerm.toLowerCase()) || false);
   
     return matchesCategory && matchesSearch;
   });
@@ -108,7 +112,7 @@ function Works() {
         </div>
       </header> */}
 
-      <div className="filter-section">
+      {/* <div className="filter-section">
         <div className="filter-content">
           <input
             type="text"
@@ -149,7 +153,12 @@ function Works() {
             ))}
           </div>
         </div>
+      </div> */}
+      <div className="top">
       </div>
+      <div className="top2">
+      </div>
+
 
       <div className="grid-container">
         {filteredVideos.map((video) => (

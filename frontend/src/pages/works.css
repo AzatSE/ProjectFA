@@ -7,11 +7,27 @@
   justify-content: center; /* центрируем сетку, если есть свободное место */
   gap: 16px;
   box-sizing: border-box;
-  background: #0f0f0f;
-  color: white;
   min-height: 100vh;
   overflow-y: auto;
+  background-color: rgb(232, 232, 232);
+  padding-top: 1%;
+
 }
+
+.top {
+  width: 100%;
+  max-width: 100vw;
+  background-color: #e7e7e7;
+  height: 5.1rem;
+}
+
+.top2 {
+  width: 100%;
+  max-width: 100vw;
+  background-color: #e7e7e7;;
+  height: 4rem;
+}
+
 
 /* Видео внутри квадратного блока */
 .video-box {
@@ -30,10 +46,11 @@
   display: block;
 }
 .video-card {
+  text-align: center;
   height: 450px;
   width: 555px; /* фиксированная ширина */
-  background: #0f0f0f;
-  border-radius: 4px;
+  background: #ffffff;
+  border-radius: 12px;
   /* box-shadow: 0 0 20px rgba(0,0,0,0.7); */
   overflow: hidden;
   cursor: pointer;
@@ -53,23 +70,26 @@
   margin: 12px;
   font-family: "Aileron", sans-serif;
   font-weight: 600;
-  font-size: 18px;
-  color: #ffd60a;
-  text-align: left;
+  font-size: 15px;
+  color: #3e3e3e;
+
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .video-description {
+  width: 90%; /* ограничивает по ширине карточки */
   max-height: 3.3em;
+  margin: 0 auto 9px; /* центрирует и отступ снизу */
+  padding: 9px 12px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  color: #49494998;
+  box-sizing: border-box;
 }
-
-
 /* Затемнённый фон модалки */
 .modal-overlay {
   position: fixed;
@@ -128,8 +148,8 @@
   border-radius: 6px;
   display: block;
 }
-/* Тёмный фон фильтрации */
-.filter-section {
+
+/* .filter-section {
   background-color: #111;
   padding: 30px 40px;
   border-bottom: 1px solid #222222;
@@ -141,7 +161,7 @@
   margin: 0 auto;
 }
 
-/* Поле поиска */
+
 .search-input {
   width: 100%;
   padding: 6px 18px;
@@ -164,7 +184,6 @@
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
-/* Кнопки категорий */
 .category-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -193,7 +212,7 @@
   color: #000;
   font-weight: 600;
   font-size: 15px;
-}
+} */
 
 /* Общий header
 .page-header.cinematic {

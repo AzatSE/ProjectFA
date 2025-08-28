@@ -1,0 +1,64 @@
+.language-switcher {
+  position: relative;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.lang-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 7px;
+  color: white;
+  font-size: 11px;
+  padding: 50%;
+}
+
+.lang-toggle-btn:hover {
+  background-color: rgba(248, 248, 248, 0.35); /* прозрачность из hex */
+}
+
+.lang-menu {
+  position: absolute;
+  top: 3rem;
+  right: -2rem;
+  background-color:#ffb300;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  min-width: 120px;
+  animation: fadeIn 0.3s ease-in-out;
+  margin-top: 12%;
+}
+
+.lang-menu button {
+  line-height: 1;
+  color: white;
+  background: none;
+  border: none;
+  text-align: center;
+  width: 100%;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 10px;
+
+  /* Удалены flex и gap */
+  display: block;
+}
+.lang-menu button:hover {
+  background-color: #ff9500;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

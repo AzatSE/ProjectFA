@@ -86,6 +86,11 @@ body, html {
     color: #eaeaea;
     margin-top: 8px;
     max-width: 30rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .ripped-edge {

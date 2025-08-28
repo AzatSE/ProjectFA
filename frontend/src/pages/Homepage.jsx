@@ -18,8 +18,10 @@ import ReviewSection from '../components/ReviewSection';
 import Fou from '../components/FourthSection'; 
 import { useLocation, useNavigationType } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function HomePage() {
+  const { t } = useTranslation("homepage");
   const location = useLocation();
   const lutsRef = useRef(null);
   const shouldScroll = useRef(location.state?.scrollToLuts || false);
@@ -63,10 +65,10 @@ export default function HomePage() {
           Your browser does not support the video tag.
         </video>
         <div className="overlay-content">
-          <h1 className="hero-title">FILMAUGUSTIN</h1>
-          <h2 className="hero-subtitle">FULL-SERVICE VIDEO PRODUCTION</h2>
-          <button className="order-button">Start Filming Now</button>
-          <p className="hero-caption">FilmAugustin brings a classic 16mm film look to any editing software. Simply drag and drop to add cinematic grain and color to your footage, achieving a vintage aesthetic in modern digital formats.</p>
+          <h1 className="hero-title">FilmCreative</h1>
+          <h2 className="hero-subtitle">{t('subtitle')}</h2>
+          <button className="order-button">{t('button')}</button>
+          <p className="hero-caption">{t('caption')}</p>
         </div>
         <div className="dark-overlay" />
         
@@ -120,12 +122,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section>
+      {/* <section>
         <div className='ReviewSec'>
         <ReviewSection/>
 
         </div>
-      </section>
+      </section> */}
 
 
       <section className="Fourth">

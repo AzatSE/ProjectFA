@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
 import "./navbar.css";
+import LanguageSwitcher from './ LanguageSwitcher'
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -15,12 +16,14 @@ export default function Navbar() {
   const [hideNavbar, setHideNavbar] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showSolidBg, setShowSolidBg] = useState(false);
+  const isAbout = pathname === "/about";
+  const isWorks = pathname === "/works";
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       const scrollingUp = currentScrollY < lastScrollY;
-      const scrolledEnough = currentScrollY > 80;
+      const scrolledEnough = currentScrollY > 20;
   
       if (scrolledEnough && !scrollingUp) {
         setHideNavbar(true); // скролл вниз — прячем
@@ -31,14 +34,14 @@ export default function Navbar() {
       if (isHome) {
         setShowBlackBg(scrolledEnough && scrollingUp);
         setShowSolidBg(currentScrollY > 1);
-      } else if (isVideoCard) {
+      } else if (isVideoCard || isAbout || isWorks) {
         setShowBlackBg(true);
         setShowSolidBg(true);
       } else {
         setShowBlackBg(scrolledEnough);
         setShowSolidBg(true);
       }
-  
+
       setLastScrollY(currentScrollY);
     };
   
@@ -48,6 +51,7 @@ export default function Navbar() {
   useEffect(() => {
     setShowBlackBg(!isHome);
   }, [location.pathname]);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -106,28 +110,35 @@ export default function Navbar() {
 
         <div className="navbar-logo">
         <Link
-  className="navbar-logo"
-  to="/"
-  onClick={(e) => {
-    if (location.pathname === "/") {
-      e.preventDefault(); // не перезагружаем страницу
-      window.scrollTo({ top: 0, behavior: "smooth" }); // плавный скролл вверх
-    } else {
-      navigate("/"); // обычный переход
-    }
+          className="navbar-logo"
+          to="/"
+          onClick={(e) => {
+            if (location.pathname === "/") {
+              e.preventDefault(); // не перезагружаем страницу
+              window.scrollTo({ top: 0, behavior: "smooth" }); // плавный скролл вверх
+            } else {
+              navigate("/"); // обычный переход
+            }
 
-    if (menuOpen) setMenuOpen(false); // закрыть мобильное меню, если открыто
-  }}
->
-  FILMAUGUSTIN
-</Link>
+            if (menuOpen) setMenuOpen(false); // закрыть мобильное меню, если открыто
+          }}
+        >
+          FILMAUGUSTIN
+        </Link>
         </div>
 
         <div className="navbar-section right">
-          <Link className="nav-link" to="/about">ABOUT</Link>
-          <Link className="nav-link" to="/products">ORDER NOW</Link>
+        <Link to="/about" className="nav-link"><span>About</span></Link>
+        <Link to="/contact" className="nav-link"><span>Contact</span></Link>
           {/* <Link className="nav-link" to="/contacts">CONTACTS</Link> */}
+
+          <div className="language-switch">
+          <LanguageSwitcher />
+          </div>
         </div>
+        
+
+    
       </nav>
 
       {menuOpen && isMobile && (
